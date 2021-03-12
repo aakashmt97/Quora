@@ -40,7 +40,7 @@ public class AdminBusinessService {
         }
 
         //Validate if user exists or not
-        UserEntity userEntity = userDao.getUser(userUuid);
+        UserEntity userEntity = userDao.getUserByUuid(userUuid);
         if(userEntity == null){
             throw new UserNotFoundException("USR-001","User with entered uuid does not exist");
         }
