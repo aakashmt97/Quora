@@ -3,12 +3,11 @@ package com.upgrad.quora.service.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "QUESTION")
-public class QuestionEntity implements Serializable {
+@Table(name = "ANSWER")
+public class AnswerEntity {
 
     @Id
     @Column(name = "id")
@@ -20,10 +19,10 @@ public class QuestionEntity implements Serializable {
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "content")
+    @Column(name = "ans")
     @NotNull
-    @Size(max = 500)
-    private String content;
+    @Size(max = 255)
+    private String answer;
 
     @Column(name = "date")
     @NotNull
@@ -32,6 +31,10 @@ public class QuestionEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private QuestionEntity question;
 
     public long getId() {
         return id;
@@ -49,12 +52,12 @@ public class QuestionEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getContent() {
-        return content;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public ZonedDateTime getDate() {
@@ -71,5 +74,13 @@ public class QuestionEntity implements Serializable {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public QuestionEntity getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(QuestionEntity question) {
+        this.question = question;
     }
 }
