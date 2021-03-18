@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class QuestionService {
 
@@ -28,5 +30,20 @@ public class QuestionService {
 
         questionEntity.setUser(userAuthTokenEntity.getUser());
         return questionDao.create(questionEntity);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<QuestionEntity> getAllQuestions(final String authorizationToken) throws AuthorizationFailedException {
+        UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        if(userAuthTokenEntity.getLogoutAt() != null){
+            throw new AuthorizationFailedException("ATHR-002","User is signed out.Sign in first to post a question");
+        }
+
+        List<QuestionEntity> allQuestions = questionDao.getAllQuestions();
+        return allQuestions;
     }
 }
