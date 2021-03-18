@@ -56,7 +56,7 @@ public class QuestionDao {
     }
 
     public List<QuestionEntity> getAllQuestionsByUser(final String userId) {
-        Query query = entityManager.createQuery("SELECT allq FROM QuestionEntity allq WHERE allq.user.uuid = :userId");
+        Query query = entityManager.createQuery("SELECT allq FROM QuestionEntity allq WHERE allq.user.uuid = :userId").setParameter("userId", userId);
         List<QuestionEntity> allQuestions = query.getResultList();
         return allQuestions;
     }
