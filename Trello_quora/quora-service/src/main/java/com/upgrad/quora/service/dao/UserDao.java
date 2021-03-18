@@ -37,4 +37,5 @@ public class UserDao {
     public void deleteUser(final String userUuid){
         UserEntity userEntity = getUser(userUuid);
         entityManager.remove(userEntity);
-    }}
+    }
+}
