@@ -22,9 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="Developed editQuestionContent_method">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="Developed DeleteQuestion_method" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +236,7 @@
       <workItem from="1615978948478" duration="10876000" />
       <workItem from="1615994814992" duration="1169000" />
       <workItem from="1615996449688" duration="273000" />
-      <workItem from="1616043879886" duration="30323000" />
+      <workItem from="1616043879886" duration="30651000" />
     </task>
     <task id="LOCAL-00001" summary="Developed GetAllQuestionMethod">
       <created>1616055972616</created>
@@ -261,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616076061278</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Developed DeleteQuestion_method">
+      <created>1616076838198</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616076838198</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -313,7 +318,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Developed GetAllQuestionMethod" />
     <MESSAGE value="Developed editQuestionContent_method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Developed editQuestionContent_method" />
+    <MESSAGE value="Developed DeleteQuestion_method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Developed DeleteQuestion_method" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615985910848">
@@ -376,10 +382,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1616074441358" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1616076086289">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1616076868770">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616076086289" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616076868770" />
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616064816738">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

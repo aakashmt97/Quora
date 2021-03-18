@@ -118,4 +118,27 @@ public class QuestionService {
 
         questionDao.deleteQuestion(questionId);
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<QuestionEntity> getAllQuestionsByUser(final String userId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException, UserNotFoundException {
+        UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
+
+        //Validate if user is signed in or not
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        //Validate if user has signed out
+        if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions posted by a specific user");
+        }
+
+        UserEntity userEntity = userDao.getUser(userId);
+        if (userEntity == null) {
+            throw new UserNotFoundException("USR-001", "User with entered uuid whose question details are to be seen does not exist");
+        }
+
+        List<QuestionEntity> allQuestions = questionDao.getAllQuestionsByUser(userId);
+        return allQuestions;
+    }
 }
