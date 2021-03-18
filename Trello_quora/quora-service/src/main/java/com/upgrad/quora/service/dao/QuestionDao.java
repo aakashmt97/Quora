@@ -46,7 +46,7 @@ public class QuestionDao {
     }
 
     public QuestionEntity editQuestion(QuestionEntity questionEntity) {
-        entityManager.merge(questionEntity);
+        entityManager.persist(questionEntity);
         return questionEntity;
     }
 

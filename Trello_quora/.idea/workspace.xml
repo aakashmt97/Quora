@@ -22,7 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="Developed DeleteQuestion_method" />
+    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="Developed GetAllQuestionsByUser_method">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/QuestionControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/QuestionControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/controller/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/controller/QuestionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" beforeDir="false" afterPath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/QuestionService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +246,8 @@
       <workItem from="1615978948478" duration="10876000" />
       <workItem from="1615994814992" duration="1169000" />
       <workItem from="1615996449688" duration="273000" />
-      <workItem from="1616043879886" duration="30651000" />
+      <workItem from="1616043879886" duration="32463000" />
+      <workItem from="1616081619389" duration="4195000" />
     </task>
     <task id="LOCAL-00001" summary="Developed GetAllQuestionMethod">
       <created>1616055972616</created>
@@ -266,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616076838198</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Developed GetAllQuestionsByUser_method">
+      <created>1616077218156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1616077218156</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -314,14 +332,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Developed GetAllQuestionMethod" />
     <MESSAGE value="Developed editQuestionContent_method" />
     <MESSAGE value="Developed DeleteQuestion_method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Developed DeleteQuestion_method" />
+    <MESSAGE value="Developed GetAllQuestionsByUser_method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Developed GetAllQuestionsByUser_method" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616082116220">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1616082116220" />
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615985910848">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -330,38 +354,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616074428669" />
-    <state width="1323" height="421" key="GridCell.Tab.0.bottom" timestamp="1616075162718">
+    <state width="1323" height="421" key="GridCell.Tab.0.bottom" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616075162718" />
-    <state width="1323" height="421" key="GridCell.Tab.0.center" timestamp="1616075162717">
+    <state width="1323" height="421" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.0.center" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1616075162717" />
-    <state width="1323" height="421" key="GridCell.Tab.0.left" timestamp="1616075162717">
+    <state width="1323" height="421" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.0.left" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1616075162717" />
-    <state width="1323" height="421" key="GridCell.Tab.0.right" timestamp="1616075162717">
+    <state width="1323" height="421" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.0.right" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1616075162717" />
-    <state width="1323" height="421" key="GridCell.Tab.1.bottom" timestamp="1616075162719">
+    <state width="1323" height="421" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.1.bottom" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616075162719" />
-    <state width="1323" height="421" key="GridCell.Tab.1.center" timestamp="1616075162719">
+    <state width="1323" height="421" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.1.center" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1616075162719" />
-    <state width="1323" height="421" key="GridCell.Tab.1.left" timestamp="1616075162718">
+    <state width="1323" height="421" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.1.left" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1616075162718" />
-    <state width="1323" height="421" key="GridCell.Tab.1.right" timestamp="1616075162719">
+    <state width="1323" height="421" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
+    <state width="1323" height="421" key="GridCell.Tab.1.right" timestamp="1616085920826">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="421" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1616075162719" />
+    <state width="1323" height="421" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1616085920826" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1615985461077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -382,10 +406,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1616074441358" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1616076868770">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1616077256691">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616076868770" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616077256691" />
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616064816738">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
