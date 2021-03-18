@@ -22,12 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" afterDir="false" />
+    <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="Developed GetAllQuestionMethod">
+      <change afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/AdminBusinessService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserBusinessService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/AnswerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" beforeDir="false" afterPath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/QuestionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/QuestionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,8 +248,16 @@
       <workItem from="1615978948478" duration="10876000" />
       <workItem from="1615994814992" duration="1169000" />
       <workItem from="1615996449688" duration="273000" />
-      <workItem from="1616043879886" duration="10411000" />
+      <workItem from="1616043879886" duration="10926000" />
     </task>
+    <task id="LOCAL-00001" summary="Developed GetAllQuestionMethod">
+      <created>1616055972616</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616055972616</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -291,6 +306,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Developed GetAllQuestionMethod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Developed GetAllQuestionMethod" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615985910848">
       <screen x="0" y="0" width="1366" height="728" />
@@ -304,6 +323,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1615985461077" />
+    <state x="129" y="55" key="MergeDialog" timestamp="1616056311274">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="129" y="55" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1616056311274" />
+    <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1616056314077">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1616056314077" />
     <state x="403" y="66" key="RollbackChangesDialog" timestamp="1616055094656">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -312,6 +339,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1615981530823" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1616056064502">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616056064502" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1615991289575">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
