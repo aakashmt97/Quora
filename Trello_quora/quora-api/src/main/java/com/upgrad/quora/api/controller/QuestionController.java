@@ -56,4 +56,22 @@ public class QuestionController {
         QuestionEditResponse questionEditResponse = new QuestionEditResponse().id(createdQuestionEntity.getUuid()).status("QUESTION EDITED");
         return new ResponseEntity<QuestionEditResponse>(questionEditResponse, HttpStatus.CREATED);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "/question/delete/{questionId}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<QuestionDeleteResponse> deleteQuestion(@PathVariable("questionId") final String qid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, InvalidQuestionException {
+        questionService.deleteQuestion(qid, authorization);
+        QuestionDeleteResponse questionDeleteResponse = new QuestionDeleteResponse().id(qid).status("QUESTION DELETED");
+        return new ResponseEntity<QuestionDeleteResponse>(questionDeleteResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "question/all/{userId}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<QuestionDetailsResponse>>  getAllQuestionsByUser(@PathVariable("userId") final String uid, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, InvalidQuestionException, UserNotFoundException {
+        final List<QuestionEntity> allQuestions = questionService.getAllQuestionsByUser(uid, authorization);
+        List<QuestionDetailsResponse> questionDetailsResponse = new ArrayList<>();
+
+        for (QuestionEntity aq : allQuestions) {
+            questionDetailsResponse.add(new QuestionDetailsResponse().id(aq.getUuid()).content(aq.getContent()));
+        }
+        return new ResponseEntity<List<QuestionDetailsResponse>>(questionDetailsResponse, HttpStatus.OK);
+    }
 }

@@ -49,4 +49,15 @@ public class QuestionDao {
         entityManager.merge(questionEntity);
         return questionEntity;
     }
+
+    public void deleteQuestion(final String questionUuid){
+        QuestionEntity questionEntity = getQuestion(questionUuid);
+        entityManager.remove(questionEntity);
+    }
+
+    public List<QuestionEntity> getAllQuestionsByUser(final String userId) {
+        Query query = entityManager.createQuery("SELECT allq FROM QuestionEntity allq WHERE allq.user.uuid = :userId");
+        List<QuestionEntity> allQuestions = query.getResultList();
+        return allQuestions;
+    }
 }
