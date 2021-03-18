@@ -88,4 +88,34 @@ public class QuestionService {
         questionDao.editQuestion(questionEntity);
         return questionEntity;
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteQuestion(final String questionId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException {
+        UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
+
+        // Validating if User has Signed-In or not
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        // Validating whether the user is Signed-Out or not
+        if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+        }
+
+        //Validating whether user is Admin or Owner
+        String role = userAuthTokenEntity.getUser().getRole();
+        UserEntity userEntity = questionDao.getQuestion(questionId).getUser();
+        if (role.equals("nonadmin") || !userEntity.getUuid().equals(userAuthTokenEntity.getUuid())) {
+            throw new AuthorizationFailedException("ATHR-003", "Only the question owner or admin can delete the question");
+        }
+
+        // Validating if the Question with corresponding Uuid exist in the DataBase or  not
+        QuestionEntity questionEntity = questionDao.getQuestion(questionId);
+        if (questionEntity == null) {
+            throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
+        }
+
+        questionDao.deleteQuestion(questionId);
+    }
 }
