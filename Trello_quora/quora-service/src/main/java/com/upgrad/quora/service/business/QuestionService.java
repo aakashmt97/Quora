@@ -23,16 +23,17 @@ public class QuestionService {
     @Autowired
     private UserDao userDao;
 
+    // This method is for Creating the Question
     @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity create(QuestionEntity questionEntity, final String authorizationToken) throws AuthorizationFailedException {
         UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
 
-        // Checking if User has Signed-In or not
+        // Validating if User has Signed-In or not
         if (userAuthTokenEntity == null) {
             throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
         }
 
-        // Checking whether the user is Signed-Out or not
+        // Validating whether the user is Signed-Out or not
         if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post a question");
         }
@@ -41,16 +42,17 @@ public class QuestionService {
         return questionDao.create(questionEntity);
     }
 
+    // This method is for Getting All Questions for any user
     @Transactional(propagation = Propagation.REQUIRED)
     public List<QuestionEntity> getAllQuestions(final String authorizationToken) throws AuthorizationFailedException {
         UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
 
-        // Checking if User has Signed-In or not
+        // Validating if the User has Signed-In or not
         if (userAuthTokenEntity == null) {
             throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
         }
 
-        // Checking whether the user is Signed-Out or not
+        // Validating whether the user is Signed-Out or not
         else if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out. Sign in first to get all questions");
         }
@@ -61,9 +63,11 @@ public class QuestionService {
         }
     }
 
+    // This method is for Editing the Question
     @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity editQuestion(QuestionEntity questionEntity, final String questionId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException {
         UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
+
         // Validating if User has Signed-In or not
         if (userAuthTokenEntity == null) {
             throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
@@ -87,13 +91,13 @@ public class QuestionService {
             throw new AuthorizationFailedException("ATHR-003", "Only the question owner can edit the question");
         }
         else {
-//            questionEntity.setUuid(questionId);
             questionEntity.setUser(userAuthTokenEntity.getUser());
             questionDao.editQuestion(questionEntity);
             return questionEntity;
         }
     }
 
+    // This method is for Deleting the Question
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteQuestion(final String questionId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException {
         UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
@@ -115,7 +119,7 @@ public class QuestionService {
             throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
         }
 
-        //Validating whether user is Admin or Owner
+        //Validating whether user is Admin or Owner of the question
         String role = userAuthTokenEntity.getUser().getRole();
         UserEntity userEntity = questionDao.getQuestion(questionId).getUser();
         if (role.equals("admin") || userEntity.getUuid().equals(userAuthTokenEntity.getUuid())) {
@@ -126,6 +130,7 @@ public class QuestionService {
         }
     }
 
+    // This method is for Getting All the Questions posted by respective user
     @Transactional(propagation = Propagation.REQUIRED)
     public List<QuestionEntity> getAllQuestionsByUser(final String userId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException, UserNotFoundException {
         UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
