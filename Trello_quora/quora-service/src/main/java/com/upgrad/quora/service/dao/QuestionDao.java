@@ -1,5 +1,6 @@
 package com.upgrad.quora.service.dao;
 
+import com.upgrad.quora.service.entity.AnswerEntity;
 import com.upgrad.quora.service.entity.QuestionEntity;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
@@ -30,9 +31,11 @@ public class QuestionDao {
     }
 
     public List<QuestionEntity> getAllQuestions() {
-        Query query = entityManager.createQuery("SELECT allq FROM QuestionEntity allq");
-        List<QuestionEntity> allQuestions = query.getResultList();
-        return allQuestions;
+        try {
+            return entityManager.createNamedQuery("getAllQuestions", QuestionEntity.class).getResultList();
+        }catch (NoResultException nre){
+            return null;
+        }
     }
 
     public QuestionEntity getQuestion(final String questionUuid){
@@ -40,13 +43,16 @@ public class QuestionDao {
             return entityManager.createNamedQuery("questionByUuid", QuestionEntity.class)
                     .setParameter("uuid", questionUuid)
                     .getSingleResult();
+//            Query query = entityManager.createQuery("SELECT aq FROM QuestionEntity aq WHERE aq.uuid = :questionUuid").setParameter("questionUuid", questionUuid);
+//            QuestionEntity questionEntity = (QuestionEntity) query.getSingleResult();
+//            return questionEntity;
         }catch (NoResultException nre){
             return null;
         }
     }
 
     public QuestionEntity editQuestion(QuestionEntity questionEntity) {
-        entityManager.persist(questionEntity);
+        entityManager.merge(questionEntity);
         return questionEntity;
     }
 
@@ -56,7 +62,7 @@ public class QuestionDao {
     }
 
     public List<QuestionEntity> getAllQuestionsByUser(final String userId) {
-        Query query = entityManager.createQuery("SELECT allq FROM QuestionEntity allq WHERE allq.user.uuid = :userId").setParameter("userId", userId);
+        Query query = entityManager.createQuery("SELECT alq FROM QuestionEntity alq WHERE alq.user.uuid = :userId").setParameter("userId", userId);
         List<QuestionEntity> allQuestions = query.getResultList();
         return allQuestions;
     }

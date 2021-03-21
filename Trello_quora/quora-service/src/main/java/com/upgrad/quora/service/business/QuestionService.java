@@ -51,25 +51,34 @@ public class QuestionService {
         }
 
         // Checking whether the user is Signed-Out or not
-        if (userAuthTokenEntity.getLogoutAt() != null) {
-            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions");
+        else if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out. Sign in first to get all questions");
         }
 
-        List<QuestionEntity> allQuestions = questionDao.getAllQuestions();
-        return allQuestions;
+        else {
+            List<QuestionEntity> allQuestions = questionDao.getAllQuestions();
+            return allQuestions;
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity editQuestion(QuestionEntity questionEntity, final String questionId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException {
         UserAuthTokenEntity userAuthTokenEntity = questionDao.getUserAuthToken(authorizationToken);
-        // Checking if User has Signed-In or not
+        // Validating if User has Signed-In or not
         if (userAuthTokenEntity == null) {
             throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
         }
 
-        // Checking whether the user is Signed-Out or not
+        // Validating whether the user is Signed-Out or not
         if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to edit the question");
+        }
+
+
+        // Validating if the Question with corresponding Uuid exist in the DataBase or  not
+        QuestionEntity question_Entity0 = questionDao.getQuestion(questionId);
+        if (question_Entity0 == null) {
+            throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
         }
 
         // Validating the Owner of the Question
@@ -77,16 +86,12 @@ public class QuestionService {
         if (!userEntity.getUuid().equals(userAuthTokenEntity.getUuid())) {
             throw new AuthorizationFailedException("ATHR-003", "Only the question owner can edit the question");
         }
-
-        // Validating if the Question with corresponding Uuid exist in the DataBase or  not
-        QuestionEntity question_Entity = questionDao.getQuestion(questionId);
-        if (question_Entity == null) {
-            throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
+        else {
+//            questionEntity.setUuid(questionId);
+            questionEntity.setUser(userAuthTokenEntity.getUser());
+            questionDao.editQuestion(questionEntity);
+            return questionEntity;
         }
-
-        questionEntity.setUser(userAuthTokenEntity.getUser());
-        questionDao.editQuestion(questionEntity);
-        return questionEntity;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -103,12 +108,6 @@ public class QuestionService {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
         }
 
-        //Validating whether user is Admin or Owner
-        String role = userAuthTokenEntity.getUser().getRole();
-        UserEntity userEntity = questionDao.getQuestion(questionId).getUser();
-        if (role.equals("nonadmin") || !userEntity.getUuid().equals(userAuthTokenEntity.getUuid())) {
-            throw new AuthorizationFailedException("ATHR-003", "Only the question owner or admin can delete the question");
-        }
 
         // Validating if the Question with corresponding Uuid exist in the DataBase or  not
         QuestionEntity questionEntity = questionDao.getQuestion(questionId);
@@ -116,7 +115,15 @@ public class QuestionService {
             throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
         }
 
-        questionDao.deleteQuestion(questionId);
+        //Validating whether user is Admin or Owner
+        String role = userAuthTokenEntity.getUser().getRole();
+        UserEntity userEntity = questionDao.getQuestion(questionId).getUser();
+        if (role.equals("admin") || userEntity.getUuid().equals(userAuthTokenEntity.getUuid())) {
+            questionDao.deleteQuestion(questionId);
+        }
+        else {
+            throw new AuthorizationFailedException("ATHR-003", "Only the question owner or admin can delete the question");
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -133,12 +140,14 @@ public class QuestionService {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions posted by a specific user");
         }
 
+        //Validate if user exist in the data base or not.
         UserEntity userEntity = userDao.getUser(userId);
         if (userEntity == null) {
             throw new UserNotFoundException("USR-001", "User with entered uuid whose question details are to be seen does not exist");
         }
-
-        List<QuestionEntity> allQuestions = questionDao.getAllQuestionsByUser(userId);
-        return allQuestions;
+        else {
+            List<QuestionEntity> allQuestions = questionDao.getAllQuestionsByUser(userId);
+            return allQuestions;
+        }
     }
 }
