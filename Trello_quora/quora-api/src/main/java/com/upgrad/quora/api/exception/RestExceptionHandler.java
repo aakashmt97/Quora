@@ -19,8 +19,7 @@ public class RestExceptionHandler {
     // This Handler is handling the InvalidQuestionException if it occurs anywhere throughout the program.
     @ExceptionHandler(InvalidQuestionException.class)
     public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException exc, WebRequest request) {
-        return new ResponseEntity<ErrorResponse>(
-                new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
     // This Handler is handling the AuthorizationFailedException if it occurs anywhere throughout the program.
@@ -35,13 +34,14 @@ public class RestExceptionHandler {
         return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(afe.getCode()).message(afe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
+    // This Handler is handling the AnswerNotFoundException if it occurs anywhere throughout the program.
     @ExceptionHandler(AnswerNotFoundException.class)
     public ResponseEntity<ErrorResponse> answerNotFoundException(AnswerNotFoundException anfe, WebRequest webRequest){
         return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(anfe.getCode()).message(anfe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(InvalidQuestionException.class)
-    public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException iqe, WebRequest webRequest){
-        return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(iqe.getCode()).message(iqe.getErrorMessage()), HttpStatus.NOT_FOUND);
-    }
+//     @ExceptionHandler(InvalidQuestionException.class)
+//     public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException iqe, WebRequest webRequest){
+//         return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(iqe.getCode()).message(iqe.getErrorMessage()), HttpStatus.NOT_FOUND);
+//     }
 }
