@@ -1,16 +1,13 @@
 package com.upgrad.quora.service.dao;
 
 
-import com.upgrad.quora.service.entity.AnswerEntity;
-import com.upgrad.quora.service.entity.QuestionEntity;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
 
 @Repository
 public class UserDao {
@@ -18,7 +15,30 @@ public class UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public UserEntity getUser(final String userUuid){
+    public UserEntity createUser(UserEntity userEntity){
+        entityManager.persist(userEntity);
+        return userEntity;
+    }
+
+    public UserEntity getUserByUsername(final String userName){
+        try {
+            return entityManager.createNamedQuery("userByUserName", UserEntity.class)
+                    .setParameter("userName", userName).getSingleResult();
+        }catch (NoResultException nre){
+            return null;
+        }
+    }
+
+    public UserEntity getUserByEmail(final String userEmail){
+        try {
+            return entityManager.createNamedQuery("userByEmail", UserEntity.class)
+                    .setParameter("userEmail", userEmail).getSingleResult();
+        }catch (NoResultException nre){
+            return null;
+        }
+    }
+
+    public UserEntity getUserByUuid(final String userUuid){
         try {
             return entityManager.createNamedQuery("userByUuid", UserEntity.class)
                     .setParameter("uuid", userUuid)
@@ -37,8 +57,18 @@ public class UserDao {
         }
     }
 
+    public void updateUser(final UserEntity updatedUserEntity) {
+        entityManager.merge(updatedUserEntity);
+    }
+
     public void deleteUser(final String userUuid){
-        UserEntity userEntity = getUser(userUuid);
+        UserEntity userEntity = getUserByUuid(userUuid);
         entityManager.remove(userEntity);
     }
+
+    public UserAuthTokenEntity createAuthToken(final UserAuthTokenEntity userAuthEntity) {
+        entityManager.persist(userAuthEntity);
+        return userAuthEntity;
+    }
+
 }

@@ -146,7 +146,7 @@ public class QuestionService {
         }
 
         //Validate if user exist in the data base or not.
-        UserEntity userEntity = userDao.getUser(userId);
+        UserEntity userEntity = userDao.getUserByUuid(userId);
         if (userEntity == null) {
             throw new UserNotFoundException("USR-001", "User with entered uuid whose question details are to be seen does not exist");
         }
