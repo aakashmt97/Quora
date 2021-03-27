@@ -26,7 +26,7 @@ public class RestExceptionHandler {
     // This Handler is handling the SignUpRestrictedException if it occurs anywhere throughout the program.
     @ExceptionHandler(SignUpRestrictedException.class)
     public ResponseEntity<ErrorResponse> signUpRestrictedException(SignUpRestrictedException signUpE, WebRequest webRequest){
-        return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(signUpE.getCode()).message(signUpE.getErrorMessage()), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(signUpE.getCode()).message(signUpE.getErrorMessage()), HttpStatus.CONFLICT);
     }
 
     // This Handler is handling the AuthenticationFailedException if it occurs anywhere throughout the program.
@@ -45,6 +45,12 @@ public class RestExceptionHandler {
     @ExceptionHandler(AnswerNotFoundException.class)
     public ResponseEntity<ErrorResponse> answerNotFoundException(AnswerNotFoundException anfe, WebRequest webRequest){
         return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(anfe.getCode()).message(anfe.getErrorMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    // This Handler is handling the UserNotFoundException if it occurs anywhere throughout the program.
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> userNotFoundException(UserNotFoundException ufe, WebRequest webRequest){
+        return new  ResponseEntity<ErrorResponse>(new ErrorResponse().code(ufe.getCode()).message(ufe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
 }
