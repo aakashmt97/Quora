@@ -57,4 +57,18 @@ public class UserDao {
         }
     }
 
+    public void updateUser(final UserEntity updatedUserEntity) {
+        entityManager.merge(updatedUserEntity);
+    }
+
+    public void deleteUser(final String userUuid){
+        UserEntity userEntity = getUserByUuid(userUuid);
+        entityManager.remove(userEntity);
+    }
+
+    public UserAuthTokenEntity createAuthToken(final UserAuthTokenEntity userAuthEntity) {
+        entityManager.persist(userAuthEntity);
+        return userAuthEntity;
+    }
+
 }
