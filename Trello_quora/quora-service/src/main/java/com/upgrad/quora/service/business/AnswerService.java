@@ -1,6 +1,5 @@
 package com.upgrad.quora.service.business;
 
-
 import com.upgrad.quora.service.dao.AnswerDao;
 import com.upgrad.quora.service.dao.UserDao;
 import com.upgrad.quora.service.entity.AnswerEntity;
@@ -14,13 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
 public class AnswerService {
+    
     @Autowired
     private UserDao userDao;
+    
     @Autowired
     private AnswerDao answerDao;
 
@@ -106,8 +106,6 @@ public class AnswerService {
         } else {
             throw new AuthorizationFailedException("ATHR-003", "Only the answer owner or admin can delete the answer");
         }
-
-
     }
 
     public QuestionEntity getQuestion (final String questionId) {
@@ -134,6 +132,5 @@ public class AnswerService {
         //If user is authorised and question is valid, return all answers along with answer id and question content
         List<AnswerEntity> allAnswers = answerDao.getAllAnswers(questionId);
         return allAnswers;
-
     }
 }
